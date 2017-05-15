@@ -25,7 +25,7 @@ class BlogController extends Controller
      */
     public function create()
     {
-         return view('blog.create');
+        return view('blog.create');
     }
 
     /**
@@ -98,7 +98,6 @@ class BlogController extends Controller
     {
         $deletedBlogs = Blog::onlyTrashed()->get();
         return view('blog.bin', compact('deletedBlogs'));
-
     }
 
     public function restore($id)
@@ -113,6 +112,5 @@ class BlogController extends Controller
         $destroyBlog = Blog::onlyTrashed()->findOrFail($id);
         $destroyBlog->forceDelete($destroyBlog);
         return back();
-
     }
 }
