@@ -29,6 +29,10 @@ Route::get('/blog/{id}/edit', 'BlogController@edit');
 Route::patch('/blog/{id}', 'BlogController@update');
 Route::delete('/blog/{id}', 'BlogController@destroy');
 
-Route::get('admin', 'AdminController@index')->middleware('admin');
+Route::get('admin', 'AdminController@index');
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::resource('categories', 'CategoryController');
+
+
+
+//Route::get('/home', 'HomeController@index')->name('home');

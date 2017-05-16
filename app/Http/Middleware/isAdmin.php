@@ -6,17 +6,12 @@ use Closure;
 
 class isAdmin
 {
-    /**
-     * Handle an incoming request.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
-     * @return mixed
-     */
+
     public function handle($request, Closure $next)
     {
         //return $next($request);
-        if($user = $request->user())  {
+        if ($user = $request->user())
+        {
             if ($user->role->name == 'Administrator') 
             {
                return $next($request);
