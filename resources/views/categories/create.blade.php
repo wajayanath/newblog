@@ -19,9 +19,6 @@
  		</div>
  	</div>
  </main>
-
 <hr>
-
-
 
 @endsection
