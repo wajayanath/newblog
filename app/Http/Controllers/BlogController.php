@@ -21,6 +21,7 @@ class BlogController extends Controller
 
     public function create()
     {
+        $category = Category::lists('name', 'id');
         return view('blog.create');
     }
 
