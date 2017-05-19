@@ -16,7 +16,6 @@
 					{!! Form::submit('Edit Category', ['class'=> 'btn btn-primary']) !!}
 				</div>
  			{!! Form::close() !!}
-
  			{!! Form::open(['method' => 'DELETE', 'action' => ['CategoryController@destroy', $category->id ]]) !!}
 				<div class='form-group'>
 					{!! Form::submit('Delete Category', ['class'=> 'btn btn-danger']) !!}
