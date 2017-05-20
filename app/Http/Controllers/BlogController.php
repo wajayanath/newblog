@@ -22,16 +22,19 @@ class BlogController extends Controller
 
     public function create()
     {
-       $category = Category::pluck('name', 'id');
-        return view('blog.create', compact('category'));
+       $categories = Category::pluck('name', 'id');
+        return view('blog.create', compact('categories'));
     }
 
 
     public function store(Request $request)
     {
         $input = $request->all();
-        Blog::create($input); 
-        return back();
+        $blog =  Blog::create($input);
+        if ($categoryIds = $request->category_id) {
+            $blog->category()->sync($categoryIds);
+        }
+        return redirect('blog');
     }
 
 
@@ -44,8 +47,9 @@ class BlogController extends Controller
 
     public function edit($id)
     {
+        $categories = Category::pluck('name', 'id');
         $blog = Blog::findOrFail($id);
-        return view('blog.edit', compact('blog'));
+        return view('blog.edit', compact('blog', 'categories'));
     }
 
 
@@ -54,6 +58,9 @@ class BlogController extends Controller
         $input = $request->all();
         $blog = Blog::findOrFail($id);
         $blog->update($input); 
+        if ($categoryIds = $request->category_id) {
+            $blog->category()->sync($categoryIds);
+        }
         return redirect('/blog');
     }
 
@@ -62,6 +69,8 @@ class BlogController extends Controller
     {
         $input = $request->all();
         $blog = Blog::findOrFail($id);
+        $categoryIds = $request->category_id;
+        $blog->category()->detach($categoryIds);
         $blog->delete($input); 
         return redirect('/blog/bin');
     }

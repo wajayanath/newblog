@@ -18,7 +18,7 @@
 				</div>
 				<div class="form-group">
 					{!! Form::label('category_id', 'Category') !!}
-					{!! Form::select('category_id[]', $category, null, ['id' => 'tag-list', 'class' => 'form-control']) !!}
+					{!! Form::select('category_id[]', $categories, null, ['id' => 'tag-list', 'class' => 'form-control', 'multiple' => "multiple" ]) !!}
 				</div>
 				<div class='form-group'>
 					{!! Form::submit('create a blog', ['class'=> 'btn btn-primary']) !!}
@@ -30,8 +30,8 @@
 
 <hr>
 
-
 @endsection
-
+{{-- 
+@include('partials.select2script') --}}
 
 

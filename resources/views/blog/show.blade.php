@@ -10,14 +10,14 @@
 	 		<div class="col-sm-8 col-sm-offset-2">
 					<article>
 						<p>{{ $blog->body }}</p>
+						@foreach ($blog->category as $category)
+							<p><a href="{{ route('categories.show', $category->slug) }}">{{ $category->name }}</a></p>
+						@endforeach
 					</article>
 	 		</div>
 		</article>
  	</div>
  </main>
-
 <hr>
-
-
 
 @endsection
