@@ -49,6 +49,7 @@ class BlogController extends Controller
     {
         $categories = Category::pluck('name', 'id');
         $blog = Blog::findOrFail($id);
+       // $categories = $blog->category->pluck('name', 'id');
         return view('blog.edit', compact('blog', 'categories'));
     }
 
@@ -69,8 +70,8 @@ class BlogController extends Controller
     {
         $input = $request->all();
         $blog = Blog::findOrFail($id);
-        $categoryIds = $request->category_id;
-        $blog->category()->detach($categoryIds);
+        //$categoryIds = $request->category_id;
+        //$blog->category()->detach($categoryIds);
         $blog->delete($input); 
         return redirect('/blog/bin');
     }

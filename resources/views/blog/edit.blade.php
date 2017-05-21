@@ -18,7 +18,7 @@
 				</div>
 				<div class="form-group">
 					{!! Form::label('category_id', 'Category') !!}
-					{!! Form::select('category_id[]', $categories, null, ['id' => 'tag-list', 'class' => 'form-control', 'multiple' => "multiple" ]) !!}
+					{!! Form::select('category_id[]', $categories, $blog->category->pluck('id')->toArray(), ['id' => 'tag-list', 'class' => 'form-control', 'multiple' => "multiple" ]) !!}
 				</div>
 				<div class='form-group'>
 					{!! Form::submit('Edit blog', ['class'=> 'btn btn-primary']) !!}
