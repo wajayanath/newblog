@@ -33,11 +33,10 @@ class BlogController extends Controller
     {
         $input = $request->all();
 
-        if ($file = $request->photo_id) {
-            //$name = Input::file('photo')->getClientOriginalName();
-            //$name = $file->getClientOriginalName();
-            //$file->move('images', $file);
-            $photo = Photo::create(['photo' => Carbon::now().'.'.$file, 'title' => $file]);
+        if ($file = $request->file('photo_id')) {
+            $name = $file->getClientOriginalName();
+            $file->move('images', $name);
+            $photo = Photo::create(['photo' => $name, 'title' => $name]);
             $input['photo_id'] = $photo->id;
         }
 

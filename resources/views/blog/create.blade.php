@@ -7,7 +7,7 @@
 			<h1>create blog posts</h1>
  		</div>
  		<div class="col-sm-10 col-sm-offset-1">
- 			{!! Form::open(['method' => 'POST', 'action' => 'BlogController@store']) !!}
+ 			{!! Form::open(['method' => 'POST', 'action' => 'BlogController@store', 'files' => true ]) !!}
 				<div class='form-group'>
 					{!! Form::label('title','Title:') !!}
 					{!! Form::text('title', null, ['class' => 'form-control']) !!}
