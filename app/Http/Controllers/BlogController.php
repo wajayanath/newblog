@@ -32,6 +32,10 @@ class BlogController extends Controller
     public function store(Request $request)
     {
         $input = $request->all();
+        $input['slug'] = str_slug($request->title);
+        $input['meta_title'] = $request->title;
+
+        //dd($input);
 
         if ($file = $request->file('photo_id')) {
             $name = $file->getClientOriginalName();
@@ -68,6 +72,20 @@ class BlogController extends Controller
     {
         $input = $request->all();
         $blog = Blog::findOrFail($id);
+
+       if ($file = $request->file('photo_id')) {
+
+            if ($blog->photo) {
+                unlink('images/'.$blog->photo->photo);
+                $blog->photo()->delete('photo');
+            }
+
+            $name = $file->getClientOriginalName();
+            $file->move('images', $name);
+            $photo = Photo::create(['photo' => $name, 'title' => $name]);
+            $input['photo_id'] = $photo->id;
+        }
+
         $blog->update($input); 
         if ($categoryIds = $request->category_id) {
             $blog->category()->sync($categoryIds);
@@ -102,6 +120,10 @@ class BlogController extends Controller
     public function destroyBlog($id)
     {
         $destroyBlog = Blog::onlyTrashed()->findOrFail($id);
+        if ($destroyBlog->photo) {
+            unlink('images/'.$destroyBlog->photo->photo);
+            $destroyBlog->photo()->delete('photo');
+        }
         $destroyBlog->forceDelete($destroyBlog);
         return back();
     }

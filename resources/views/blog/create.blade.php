@@ -25,6 +25,10 @@
 					{!! Form::select('category_id[]', $categories, null, ['id' => 'tag-list', 'class' => 'form-control', 'multiple' => "multiple" ]) !!}
 				</div>
 				<div class='form-group'>
+					{!! Form::label('meta_desc','Meta Description :') !!}
+					{!! Form::text('meta_desc', null, ['class' => 'form-control']) !!}
+				</div>
+				<div class='form-group'>
 					{!! Form::submit('create a blog', ['class'=> 'btn btn-primary']) !!}
 				</div>
  			{!! Form::close() !!}

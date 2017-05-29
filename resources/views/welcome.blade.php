@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@include('partials.meta-static')
 @section('content')
 
     <div id="welcome">
@@ -7,7 +8,6 @@
                 <div class="title m-b-md">
                     New IT Books
                 </div>
-
                 <div class="links">
                     <a href="{{ url('/blog') }}">Blog</a>
                     <a href="{{ url('/login') }}">Login</a>
