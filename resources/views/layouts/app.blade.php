@@ -8,8 +8,9 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>@yield('meta-title') </title>
+    <title>@yield('meta-title')</title>
     <meta name="description" content="@yield('meta-desc')" >
+    <meta name="author" content="@yield('meta-author')" >
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -46,7 +47,8 @@
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
-                        {{-- <li><a href="{{ url('/blog') }}">Blog</a></li> --}}
+                        <li><a href="{{ url('/blog') }}">Blog</a></li>
+                        <li><a href="{{ url('/admin') }}">Admin</a></li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->

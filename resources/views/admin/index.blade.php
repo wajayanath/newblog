@@ -11,6 +11,35 @@
  			<button class="btn btn-danger link"><a style="color:#fff" href="{{ url('/blog/bin') }}">Trashed Blog</a></button>
  		</div>
  	</div>
+
+	<div class="col-sm-12">
+	<h1 class="page-header">Recent Blog</h1>
+		<div class="table-responsive">
+			<table class="table table-sthipped">
+				<thead>
+					<tr>
+						<th>blog Title</th>
+						<th>blog Content</th>
+						<th>status</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						@foreach ($blogs as $blog)
+						<tr>
+							<th>{{ $blog->title }}</th>
+							<th>{!! str_limit($blog->body, 100) !!}</th>
+							<th>{{ $blog->status == 0 ? 'Draft' : 'Published' }}</th>
+						</tr>
+							
+						@endforeach
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+
  </main>
 
 <hr>

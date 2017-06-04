@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Blog;
 
 class AdminController extends Controller
 {
@@ -14,6 +15,7 @@ class AdminController extends Controller
 
     public function index()
     {
-    	return view('admin.index');
+    	$blogs = Blog::all();
+    	return view('admin.index', compact('blogs'));
     }
 }

@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@include('partials.meta-dynamic')
 @section('content')
 
 <main class="container-fluid">
