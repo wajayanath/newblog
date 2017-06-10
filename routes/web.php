@@ -26,13 +26,17 @@ Route::get('/blog/create', 'BlogController@create');
 Route::post('/blog/store', 'BlogController@store');
 Route::get('/blog/{id}', 'BlogController@show');
 Route::get('/blog/{id}/edit', 'BlogController@edit');
-Route::patch('/blog/{id}', 'BlogController@update');
+
+Route::patch('/blog/{id}','BlogController@publish');
+
+//Route::patch('/blog/{id}', 'BlogController@update');
+
 Route::delete('/blog/{id}', 'BlogController@destroy');
 
 Route::get('admin', 'AdminController@index');
 
 Route::resource('categories', 'CategoryController');
 
-
+Route::resource('users', 'UserController');
 
 Route::get('/home', 'HomeController@index')->name('home');

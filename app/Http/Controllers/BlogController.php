@@ -94,6 +94,14 @@ class BlogController extends Controller
     }
 
 
+    public function publish(Request $request, $id)
+    {
+        $input = $request->all();
+        $blog = Blog::findOrFail($id);
+        $blog->update($input);
+        return back();
+    }
+
     public function destroy(Request $request, $id)
     {
         $input = $request->all();
