@@ -27,9 +27,9 @@ Route::post('/blog/store', 'BlogController@store');
 Route::get('/blog/{id}', 'BlogController@show');
 Route::get('/blog/{id}/edit', 'BlogController@edit');
 
-Route::patch('/blog/{id}','BlogController@publish');
+Route::put('/blog/{id}','BlogController@publish');
 
-//Route::patch('/blog/{id}', 'BlogController@update');
+Route::patch('/blog/{id}', 'BlogController@update');
 
 Route::delete('/blog/{id}', 'BlogController@destroy');
 

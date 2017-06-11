@@ -51,6 +51,4 @@
 
 <hr>
 
-
-
 @endsection

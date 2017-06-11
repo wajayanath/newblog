@@ -7,6 +7,7 @@ use App\Blog;
 use App\Category;
 use App\Photo;
 use Carbon\Carbon;
+use Session;
 
 class BlogController extends Controller
 {
@@ -31,6 +32,21 @@ class BlogController extends Controller
 
     public function store(Request $request)
     {
+        $rules = [
+            'title' => ['required', 'min:20', 'max:200', 'unique:blogs'],
+            'body' => ['required', 'min:200'],
+            'photo_id' => ['mimes:jpeg, jpg, png', 'max:1000'],
+            'category_id' => ['required'],
+            'meta_desc' => ['required', 'min:10', 'max:300'],
+        ];
+
+        $message = [
+            'photo_id.mimes' => 'your image must be jpeg, jpg or png',
+            'category_id.required' => 'Category field is required',
+            'photo_id.max' => 'your image should not be larger than 1mb',
+        ];
+
+        $this->validate($request, $rules, $message);
         $input = $request->all();
         $input['slug'] = str_slug($request->title);
         $input['meta_title'] = $request->title;
@@ -48,6 +64,9 @@ class BlogController extends Controller
         if ($categoryIds = $request->category_id) {
             $blog->category()->sync($categoryIds);
         }
+
+        Session::flash('flash_message', 'You have just created a blog..!');
+
         return redirect('blog');
      }
 
@@ -70,6 +89,21 @@ class BlogController extends Controller
 
     public function update(Request $request, $id)
     {
+        $rules = [
+            'title' => ['required', 'min:20', 'max:200'],
+            'body' => ['required', 'min:200'],
+            'photo_id' => ['mimes:jpeg, jpg, png', 'max:1000'],
+            'meta_desc' => ['required', 'min:10', 'max:300'],
+        ];
+
+         $message = [
+            'photo_id.mimes' => 'your image must be jpeg, jpg or png',
+            'category_id.required' => 'Category field is required',
+            'photo_id.max' => 'your image should not be larger than 1mb',
+        ];
+
+        $this->validate($request, $rules,  $message);
+
         $input = $request->all();
         $blog = Blog::findOrFail($id);
 

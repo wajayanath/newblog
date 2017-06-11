@@ -10,6 +10,7 @@
  			<button class="btn btn-primary link"><a style="color:#fff" href="{{ url('/blog/create') }}">Create Blog</a></button>
  			<button class="btn btn-danger link"><a style="color:#fff" href="{{ url('/blog/bin') }}">Trashed Blog</a></button>
  			<button class="btn btn-primary link"><a style="color:#fff" href="{{ url('/users') }}">Users</a></button>
+ 			<button class="btn btn-default link"><a style="color:#333" href="{{ url('/categories/create') }}">Create Categories</a></button>
  		</div>
  	</div>
 

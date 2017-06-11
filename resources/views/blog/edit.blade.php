@@ -9,6 +9,9 @@
  		<div class="col-sm-10 col-sm-offset-1">
  			{!! Form::model($blog, ['method' => 'PATCH', 'action' => ['BlogController@update', $blog->id], 'files' => true ]) !!}
 				<div class='form-group'>
+
+					@include('partials.error-message')
+
 					{!! Form::label('title','Title:') !!}
 					{!! Form::text('title', null, ['class' => 'form-control']) !!}
 				</div>
@@ -23,6 +26,10 @@
 				<div class="form-group">
 					{!! Form::label('category_id', 'Category') !!}
 					{!! Form::select('category_id[]', $categories, $blog->category->pluck('id')->toArray(), ['id' => 'tag-list', 'class' => 'form-control', 'multiple' => "multiple" ]) !!}
+				</div>
+				<div class='form-group'>
+					{!! Form::label('meta_desc','Meta Description :') !!}
+					{!! Form::text('meta_desc', null, ['class' => 'form-control']) !!}
 				</div>
 				<div class='form-group'>
 					{!! Form::submit('Edit blog', ['class'=> 'btn btn-primary']) !!}
