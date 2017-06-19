@@ -16,6 +16,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
     <link href="{{ asset('css/select2.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/sweetalert.min.css') }}" rel="stylesheet">
     <!-- Scripts -->
     <script>
         window.Laravel = {!! json_encode([
@@ -88,9 +89,24 @@
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="{{ asset('js/select2.min.js') }}"></script>
+    <script src="{{ asset('js/sweetalert.min.js') }}"></script>   
+{{--     <script type="text/javascript">
+      @if ( notify()->ready())
+          swal({
+              title: "{!! notify()->message() !!}",
+              text: "{!! notify()->type() !!}",
+              @if (notify()->option('timer'))
+                  timer:"{!! notify()->option('timer') !!}",
+                  showConfirmButton: false,
+              @endif
+              html:true
+          });
+      @endif
+    </script> --}} 
     <script type="text/javascript">
       $('#tag-list').select2();
-    </script>
+     </script>
+     
 
 </body>
 </html>

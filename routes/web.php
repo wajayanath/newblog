@@ -37,6 +37,8 @@ Route::get('admin', 'AdminController@index');
 
 Route::resource('categories', 'CategoryController');
 
+Route::get('userslist', 'UserController@userslist');
+
 Route::resource('users', 'UserController');
 
 Route::get('/home', 'HomeController@index')->name('home');

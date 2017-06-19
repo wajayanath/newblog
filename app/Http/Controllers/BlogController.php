@@ -67,6 +67,8 @@ class BlogController extends Controller
 
         Session::flash('flash_message', 'You have just created a blog..!');
 
+      //  notify()->flash('<h2>You have successfully created a Blog</h2>', 'success');
+
         return redirect('blog');
      }
 
