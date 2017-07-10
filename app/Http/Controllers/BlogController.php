@@ -8,6 +8,7 @@ use App\Category;
 use App\Photo;
 use Carbon\Carbon;
 use Session;
+use Illuminate\Support\Facades\Auth;
 
 class BlogController extends Controller
 {
@@ -18,7 +19,7 @@ class BlogController extends Controller
     
     public function index()
     {
-        $blogs = Blog::where('status', 0)->latest()->get();
+        $blogs = Blog::where('status', 1)->latest()->get();
         return view('blog.index', compact('blogs'));
     }
 
@@ -49,6 +50,7 @@ class BlogController extends Controller
         $this->validate($request, $rules, $message);
         $input = $request->all();
         $input['slug'] = str_slug($request->title);
+        $input['user_id'] = Auth::user()->id;
         $input['meta_title'] = $request->title;
 
         //dd($input);
@@ -73,9 +75,9 @@ class BlogController extends Controller
      }
 
 
-    public function show($id)
+    public function show($slug)
     {
-        $blog = Blog::findOrFail($id);
+        $blog = Blog::whereSlug($slug)->first();
         return view('blog.show', compact('blog'));
     }
 
@@ -95,7 +97,6 @@ class BlogController extends Controller
             'title' => ['required', 'min:20', 'max:200'],
             'body' => ['required', 'min:200'],
             'photo_id' => ['mimes:jpeg, jpg, png', 'max:1000'],
-            'meta_desc' => ['required', 'min:10', 'max:300'],
         ];
 
          $message = [

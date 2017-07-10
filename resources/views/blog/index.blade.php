@@ -17,8 +17,10 @@
 
  			@foreach ($blogs as $blog)
 				<article>
-					<h2><a href="{{ action('BlogController@show', [$blog->id]) }}">{{ $blog->title }}</a></h2>
+					<h2><a href="{{ action('BlogController@show', [$blog->slug]) }}">{{ $blog->title }}</a></h2>
 					<p>{{ $blog->body }}</p>
+					<hr>
+					<p>Blog by <a href="#">{{ $blog->user->name }}</a> Posted  <strong>{{ $blog->created_at->diffForHumans() }}</strong> @foreach($blog->category as $category) <a href="{{ route('categories.show', $category->slug) }}">{{ $category->name }}</a> @endforeach</p>
 				</article>
 			@endforeach
  		</div>

@@ -29,16 +29,15 @@
 				<tbody>
 					<tr>
 						@foreach ($blogs as $blog)
-							<tr>
 								{!! Form::model($blog, ['method' => 'PATCH', 'action' => ['BlogController@publish', $blog->id]]) !!}
-								@include('partials.error-message')
-					<td>{!! Form::text('title', null, ['class' => 'form-control']) !!}</td>
-					<td>{!! Form::textarea('body', null, ['class' => 'form-control']) !!}</td>
-					<td>{!! Form::select("status", ['0' => 'Draft', '1' => 'published'], null , ['class' => 'btn btn-primary']) !!} </td>
-					<td>{!! Form::submit('submit', ['class' => 'btn btn-success']) !!}
-								{!! Form::close() !!}
-					</td>
-							</tr>
+						@include('partials.error-message')
+									<tr>
+									<td>{!! Form::text('title', null, ['class' => 'form-control']) !!}</td>
+									<td>{!! Form::textarea('body', null, ['class' => 'form-control']) !!}</td>
+									<td>{!! Form::select("status", ['0' => 'Draft', '1' => 'published'], null , ['class' => 'btn btn-primary']) !!} </td>
+									<td>{!! Form::submit('submit', ['class' => 'btn btn-success']) !!}</td>
+									</tr>
+									{!! Form::close() !!}
 						@endforeach
 					</tr>
 				</tbody>
