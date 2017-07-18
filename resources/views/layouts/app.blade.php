@@ -17,6 +17,7 @@
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
     <link href="{{ asset('css/select2.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/sweetalert.min.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- Scripts -->
     <script>
         window.Laravel = {!! json_encode([
@@ -47,8 +48,20 @@
 
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
-                    <ul class="nav navbar-nav">
-                        <li><a href="{{ url('/blog') }}">Blog</a></li>
+                    <ul class="nav navbar-nav navbar-left">
+                        <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Categories  <span class="caret"></span></a>
+                        @if ($categories)
+                        <ul class="dropdown-menu" role="menu">
+                            @foreach ($categories as $category)
+                                @if ($category->blog->count() > 0)
+                                    <li><a href="{{ route('categories.show', $category->slug) }}">{{ $category->name }}</a>
+                                    </li>
+                                @endif
+                            @endforeach
+                        </ul>
+                        @endif
+                        </li>
                         <li><a href="{{ url('/admin') }}">Admin</a></li>
                     </ul>
 

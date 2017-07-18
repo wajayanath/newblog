@@ -20,15 +20,11 @@
 					<h2><a href="{{ action('BlogController@show', [$blog->slug]) }}">{{ $blog->title }}</a></h2>
 					<p>{{ $blog->body }}</p>
 					<hr>
-					<p>Blog by <a href="#">{{ $blog->user->name }}</a> Posted  <strong>{{ $blog->created_at->diffForHumans() }}</strong> @foreach($blog->category as $category) <a href="{{ route('categories.show', $category->slug) }}">{{ $category->name }}</a> @endforeach</p>
+					<p><i class="fa fa-btn fa-user"></i> Blog by <a href="#">{{ $blog->user->name }}</a> <i class="fa fa-btn fa-clock-o"></i> Posted  <strong>{{ $blog->created_at->diffForHumans() }}</strong> @foreach($blog->category as $category) <i class="fa fa-btn fa-cubes"></i> <a href="{{ route('categories.show', $category->slug) }}">{{ $category->name }}</a> @endforeach</p>
 				</article>
 			@endforeach
  		</div>
  	</div>
  </main>
-
 <hr>
-
-
-
 @endsection
