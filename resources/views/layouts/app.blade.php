@@ -50,19 +50,18 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-left">
                         <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Categories  <span class="caret"></span></a>
-                        @if ($categories)
-                        <ul class="dropdown-menu" role="menu">
-                            @foreach ($categories as $category)
-                                @if ($category->blog->count() > 0)
-                                    <li><a href="{{ route('categories.show', $category->slug) }}">{{ $category->name }}</a>
-                                    </li>
-                                @endif
-                            @endforeach
-                        </ul>
-                        @endif
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> Categories <span class="caret"></span></a>
+                            @if ($c)
+                                <ul class="dropdown-menu" role="menu">
+                                    @foreach ($c as $c)
+                                        @if ($c->blog->count()>0)
+                                            <li><a href="{{ route('categories.show', $c->slug) }}">{{ $c->name }}</a></li>
+                                        @endif 
+                                    @endforeach
+                                </ul>
+                            @endif
                         </li>
-                        <li><a href="{{ url('/admin') }}">Admin</a></li>
+                       <li><a href="{{ url('/admin') }}">Admin</a></li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->

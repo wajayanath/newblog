@@ -10,14 +10,13 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-// View::share('blog', App\Blog::all());
-View::share('categories', App\Category::latest()->get());
+View::share('blog', App\Blog::all());
+View::share('c', App\Category::latest()->get());
 
-Route::get('/', function () {
-    return view('welcome');
-});
-// Route::get('/', ['as' => '/', 'uses' => 'BlogController@index']);
-
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+Route::get('/', ['as' => '/', 'uses' => 'BlogController@index']);
 
 Auth::routes();
 
