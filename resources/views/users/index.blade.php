@@ -20,9 +20,12 @@
 		@if ($user->blog)
 			<ul>
 				@foreach ($blog as $blog)
-					<li style="list-style-type: none;">
-						<a href="{{ action('BlogController@show', [$blog->slug]) }}">{{ $blog->title }}</a>
-					</li>
+					@if ($blog->user_id == $user->id)
+						<li style="list-style-type: none;">
+						<button class="btn btn-success btn-xs">{{ $blog->status == 0 ? 'Draft' : 'Published' }}</button>
+							<a href="{{ action('BlogController@show', [$blog->slug]) }}">{{ $blog->title }}</a>
+						</li>
+					@endif
 				@endforeach
 			</ul>
 		@endif

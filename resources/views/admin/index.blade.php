@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('content')
+@include('partials.error-message')
 
 <main class="container-fluid">
  	<div class="container-fluid">
@@ -28,17 +29,18 @@
 				</thead>
 				<tbody>
 					<tr>
-						@foreach ($blogs as $blog)
+						
+						@foreach ($blog as $blog)
 								{!! Form::model($blog, ['method' => 'PATCH', 'action' => ['BlogController@publish', $blog->id]]) !!}
-						@include('partials.error-message')
+
 									<tr>
 									<td>
 									{!! Form::text('title', null, ['class' => 'form-control']) !!}
 									<a class="btn btn-danger btn-xs" href="{{ action('BlogController@edit', [$blog->id]) }}">Edit</a>
 									</td>
 									<td>{!! Form::textarea('body', null, ['class' => 'form-control']) !!}</td>
-									<td>{!! Form::select("status", ['0' => 'Draft', '1' => 'published'], null , ['class' => 'btn btn-primary']) !!} </td>
-									<td>{!! Form::submit('submit', ['class' => 'btn btn-success']) !!}</td>
+									<td>{!! Form::select("status", ['0' => 'Draft', '1' => 'published'], null , ['class' => 'btn btn-primary btn-xs']) !!} </td>
+									<td>{!! Form::submit('submit', ['class' => 'btn btn-success btn-xs']) !!}</td>
 									</tr>
 									{!! Form::close() !!}
 						@endforeach
