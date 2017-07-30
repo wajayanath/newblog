@@ -10,7 +10,7 @@
 
 	<div class="col-sm-12">
 	<h1 class="page-header">Latest Blog</h1>
-		{{ $user->blog }}
+		{{ $user->blog  }}
 	</div>
 
 

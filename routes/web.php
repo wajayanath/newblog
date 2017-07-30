@@ -46,3 +46,5 @@ Route::get('userslist', 'UserController@userslist');
 Route::resource('users', 'UserController');
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/{username}', array('as' => 'show', 'uses' => 'UserController@show' ));
