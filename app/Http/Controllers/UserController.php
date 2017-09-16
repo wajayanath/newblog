@@ -66,9 +66,10 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($username)
     {
-        //
+        $user = User::whereUsername($username)->first();
+        return view('users.edit', ['user' => $user]);
     }
 
     /**
@@ -78,10 +79,10 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $username)
     {
         $input = $request->all();
-        $user = User::findOrFail($id);
+        $user = User::whereUsername($username)->first();
         $user->update($input);
         return back();
     }

@@ -15,22 +15,21 @@
  	 		
 
 	<div class="col-sm-12">
-	<h1 class="page-header">Latest Blogs</h1>
-	@if ($user = Auth::user())
-		@if ($user->blog)
-			<ul>
-				@foreach ($blog as $blog)
-					@if ($blog->user_id == $user->id)
-						<li style="list-style-type: none;">
-						<button class="btn btn-success btn-xs">{{ $blog->status == 0 ? 'Draft' : 'Published' }}</button>
-							<a href="{{ action('BlogController@show', [$blog->slug]) }}">{{ $blog->title }}</a>
-						</li>
-					@endif
-				@endforeach
-			</ul>
+		<h1 class="page-header">Latest Blogs</h1>
+		@if ($user = Auth::user())
+			@if ($user->blog)
+				<ul>
+					@foreach ($blog as $blog)
+						@if ($blog->user_id == $user->id)
+							<li style="list-style-type: none;">
+							<button class="btn btn-success btn-xs">{{ $blog->status == 0 ? 'Draft' : 'Published' }}</button>
+								<a href="{{ action('BlogController@show', [$blog->slug]) }}">{{ $blog->title }}</a>
+							</li>
+						@endif
+					@endforeach
+				</ul>
+			@endif
 		@endif
-	@endif
-
 	</div>
 
 
